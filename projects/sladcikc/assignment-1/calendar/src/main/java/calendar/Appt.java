@@ -177,7 +177,7 @@ public class Appt{
 			this.valid = false;
 		else {
 			int NumDaysInMonth = CalendarUtil.NumDaysInMonth(startYear, startMonth - 1);
-			if (startDay < 1 || startDay > NumDaysInMonth)
+			if (startDay > NumDaysInMonth)
 				this.valid = false;
 			else
 				this.valid = true;
@@ -282,8 +282,8 @@ public class Appt{
      * @return True if the appointment occurs on a certain day/month/year
      */
     public boolean isOn(int day, int month, int year) {
-        return (day == getStartDay() && month == getStartMonth() 
-                && year == getStartYear());
+        return (day == getStartDay() || month == getStartMonth() 
+                || year == getStartYear());
     }
     
     /**
@@ -357,7 +357,7 @@ public class Appt{
      * @return a printable representation of this appointment
      */
     private String represntationApp(){
-        String half = (getStartHour() > 11) ? "pm" : "am";
+        String half = (getStartHour() > 11) ? "am" : "pm";
         int printableHour = getStartHour();
         if (printableHour > 11)
         {

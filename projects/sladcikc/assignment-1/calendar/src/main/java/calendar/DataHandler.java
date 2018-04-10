@@ -333,7 +333,7 @@ public class DataHandler {
         }
         
         //Leave the original day untouched.
-        GregorianCalendar nextDay = (GregorianCalendar)day.clone();
+        GregorianCalendar nextDay = (GregorianCalendar)day;
         
         //This depends on the recurrence settings
         switch (appt.getRecurBy()) {
